@@ -24,7 +24,7 @@ import (
 var d clusters.Observations
 
 func main() {
-	// set up a random two-dimensional data set (float64 values between 0.0 and 1.0)
+	//setup data
 	setupData("Average_Daily_Traffic_Counts.csv")
 	// Partition the data points into 20 clusters
 	km, _ := kmeans.NewWithOptions(0.01, plotter.SimplePlotter{})
@@ -48,9 +48,9 @@ func setupData(file string) {
 	//read without header
 	for i := 1; i < len(csvData); i++ {
 		lat, _ := strconv.ParseFloat(csvData[i][6], 64)
-		lon, _ := strconv.ParseFloat(csvData[i][7], 64)
+		lng, _ := strconv.ParseFloat(csvData[i][7], 64)
 		d = append(d, clusters.Coordinates{
-			lon,
+			lng,
 			lat,
 		})
 
